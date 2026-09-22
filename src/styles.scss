@@ -1,0 +1,59 @@
+/* src/styles.scss - Tema Preto OLED com Mescla Roxo & Azul Cósmico */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+    --bg-primary: #000000; // PRETO OLED PURO
+    --bg-card: #08080f; // Cartões em tom escuro profundo
+    --bg-card-hover: #10101c; // Hover suave
+    --border-subtle: #181829; // Bordas em tom neutro escuro
+    --border-highlight: #a855f7; // Borda em destaque
+
+    --text-main: #ffffff; // Branco puro
+    --text-muted: #cbd5e1; // Cinza claro para leitura
+    --text-dim: #78716c; // Detalhes menores
+
+    // O EQUILÍBRIO ENTRE ROXO E AZUL:
+    --accent-purple: #a855f7; // Roxo / Violeta Elétrico
+    --accent-blue: #06b6d4; // Azul Ciano Elétrico
+    --accent-color: #8b5cf6; // Tom de transição (Índigo Violeta)
+    --accent-glow: rgba(168, 85, 247, 0.25);
+    --accent-indigo: #06b6d4; // Azul para compor o degradê
+
+    --radius-lg: 16px;
+    --radius-md: 10px;
+    --radius-sm: 6px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-main);
+    line-height: 1.6;
+    min-height: 100vh;
+    padding: 2.5rem 1.5rem;
+    overflow-x: hidden;
+}
+
+/* Scrollbar estilizada */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #000000;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #181829;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-purple);
+}

@@ -1,0 +1,144 @@
+<main class="bento-container">
+
+  <!-- CARD 1: PERFIL / HERO (Ocupa destaque no topo) -->
+  <section class="bento-card card-hero">
+    <div class="status-badge">
+      <span class="status-dot"></span>
+      {{ perfil.status }}
+    </div>
+
+    <div class="hero-header">
+      <div class="avatar-placeholder">LD</div>
+      <div class="hero-titles">
+        <h1 class="hero-name">{{ perfil.nome }}</h1>
+        <h2 class="hero-role">{{ perfil.titulo }}</h2>
+        <p class="hero-sub">{{ perfil.subtitulo }}</p>
+      </div>
+    </div>
+
+    <p class="hero-bio">{{ perfil.bio }}</p>
+
+    <div class="hero-footer">
+      <span class="location-tag">📍 {{ perfil.localizacao }}</span>
+      <span class="tech-tag">🚀 Angular 22 & TypeScript</span>
+    </div>
+  </section>
+
+  <!-- CARD 2: HABILIDADES & FILTROS INTERATIVOS -->
+  <section class="bento-card card-skills">
+    <div class="card-header">
+      <h3>⚡ Habilidades & Tecnologias</h3>
+      <p class="card-desc">Filtre por categoria usando Signals reativos</p>
+    </div>
+
+    <!-- Botões de Filtro Reativos -->
+    <div class="filter-group">
+      <button class="filter-btn" [class.active]="categoriaSelecionada() === 'todas'"
+        (click)="selecionarCategoria('todas')">
+        Todas
+      </button>
+      <button class="filter-btn" [class.active]="categoriaSelecionada() === 'frontend'"
+        (click)="selecionarCategoria('frontend')">
+        Front-end
+      </button>
+      <button class="filter-btn" [class.active]="categoriaSelecionada() === 'ia_dados'"
+        (click)="selecionarCategoria('ia_dados')">
+        IA & Dados
+      </button>
+      <button class="filter-btn" [class.active]="categoriaSelecionada() === 'fundamentos'"
+        (click)="selecionarCategoria('fundamentos')">
+        Fundamentos
+      </button>
+      <button class="filter-btn" [class.active]="categoriaSelecionada() === 'ferramentas'"
+        (click)="selecionarCategoria('ferramentas')">
+        Ferramentas
+      </button>
+    </div>
+
+    <!-- Lista Reativa de Skills -->
+    <div class="skills-grid">
+      @for (skill of habilidadesFiltradas(); track skill.nome) {
+      <div class="skill-item">
+        <div class="skill-info">
+          <span class="skill-name">{{ skill.icone }} {{ skill.nome }}</span>
+          <span class="skill-pct">{{ skill.nivel }}%</span>
+        </div>
+        <div class="progress-bar-bg">
+          <div class="progress-bar-fill" [style.width.%]="skill.nivel"></div>
+        </div>
+        <p class="skill-desc">{{ skill.descricao }}</p>
+      </div>
+      }
+    </div>
+  </section>
+
+  <!-- CARD 3: PROJETOS EM DESTAQUE -->
+  <section class="bento-card card-projects">
+    <div class="card-header">
+      <h3>🚀 Projetos em Destaque</h3>
+      <p class="card-desc">Construções e aplicações práticas</p>
+    </div>
+
+    <div class="projects-list">
+      @for (proj of projetos; track proj.id) {
+      <div class="project-item" [class.featured]="proj.destaque">
+        @if (proj.destaque) {
+        <span class="badge-featured">🌟 Destaque Atual</span>
+        }
+        <h4>{{ proj.titulo }}</h4>
+        <p>{{ proj.descricao }}</p>
+
+        <div class="tech-pills">
+          @for (tech of proj.tecnologias; track tech) {
+          <span class="pill">{{ tech }}</span>
+          }
+        </div>
+      </div>
+      }
+    </div>
+  </section>
+
+  <!-- CARD 4: FORMAÇÃO ACADÊMICA -->
+  <section class="bento-card card-education">
+    <div class="card-header">
+      <h3>🎓 Formação Acadêmica</h3>
+      <p class="card-desc">Base teórica e prática</p>
+    </div>
+
+    <div class="edu-content">
+      <div class="edu-badge">{{ formacao.periodo }}</div>
+      <h4>{{ formacao.curso }}</h4>
+      <p class="edu-school">{{ formacao.instituicao }}</p>
+      <p class="edu-details">{{ formacao.detalhes }}</p>
+    </div>
+  </section>
+
+  <!-- CARD 5: CONTATO & CONEXÕES -->
+  <section class="bento-card card-contact">
+    <div class="card-header">
+      <h3>📬 Conectar & Contato</h3>
+      <p class="card-desc">Vamos conversar sobre tecnologia e oportunidades?</p>
+    </div>
+
+    <div class="contact-actions">
+      <!-- Botão com Feedback Reativo de Cópia -->
+      <button class="action-btn copy-btn" (click)="copiarEmail()">
+        @if (copiado()) {
+        <span>✅ E-mail Copiado com Sucesso!</span>
+        } @else {
+        <span>📋 Copiar: {{ perfil.email }}</span>
+        }
+      </button>
+
+      <div class="social-links">
+        <a [href]="perfil.linkedin" target="_blank" class="social-btn linkedin">
+          🔗 Acessar LinkedIn
+        </a>
+        <a [href]="perfil.github" target="_blank" class="social-btn github">
+          🐙 GitHub
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>

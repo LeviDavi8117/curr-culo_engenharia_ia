@@ -1,0 +1,401 @@
+/* src/app/app.component.scss - Estilos do Bento Grid */
+
+.bento-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 1.5rem;
+}
+
+/* Base dos Cartões Bento */
+.bento-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    flex-direction: column;
+
+    &:hover {
+        border-color: var(--border-highlight);
+        background: var(--bg-card-hover);
+        transform: translateY(-2px);
+        box-shadow: 0 12px 24px -10px rgba(0, 0, 0, 0.5);
+    }
+}
+
+.card-header {
+    margin-bottom: 1.25rem;
+
+    h3 {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--text-main);
+    }
+
+    .card-desc {
+        font-size: 0.85rem;
+        color: var(--text-dim);
+        margin-top: 0.2rem;
+    }
+}
+
+/* =========================================
+   CARD 1: HERO / PERFIL (Ocupa 12 colunas)
+   ========================================= */
+.card-hero {
+    grid-column: span 12;
+    position: relative;
+    background: linear-gradient(135deg, #18181b 0%, #1c1917 100%);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+
+    .status-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: var(--accent-glow);
+        border: 1px solid var(--accent-color);
+        color: var(--accent-color);
+        padding: 0.35rem 0.85rem;
+        border-radius: 9999px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        width: fit-content;
+        margin-bottom: 1.25rem;
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--accent-color);
+            animation: pulse 2s infinite;
+        }
+    }
+
+    .hero-header {
+        display: flex;
+        align-items: center;
+        gap: 1.25rem;
+        margin-bottom: 1rem;
+
+        .avatar-placeholder {
+            width: 70px;
+            height: 70px;
+            border-radius: var(--radius-md);
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-indigo));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: #fff;
+            box-shadow: 0 8px 16px var(--accent-glow);
+        }
+
+        .hero-name {
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+        }
+
+        .hero-role {
+            font-size: 1.1rem;
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        .hero-sub {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+    }
+
+    .hero-bio {
+        font-size: 1rem;
+        color: var(--text-muted);
+        margin-bottom: 1.25rem;
+        max-width: 850px;
+    }
+
+    .hero-footer {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+
+        span {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.4rem 0.85rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            border: 1px solid var(--border-subtle);
+        }
+    }
+}
+
+/* =========================================
+   CARD 2: SKILLS (Ocupa 7 colunas)
+   ========================================= */
+.card-skills {
+    grid-column: span 7;
+
+    .filter-group {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        margin-bottom: 1.25rem;
+
+        .filter-btn {
+            background: transparent;
+            border: 1px solid var(--border-subtle);
+            color: var(--text-muted);
+            padding: 0.4rem 0.85rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.8rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+
+            &:hover {
+                background: rgba(255, 255, 255, 0.05);
+                color: var(--text-main);
+            }
+
+            &.active {
+                background: var(--accent-color);
+                color: #09090b;
+                font-weight: 700;
+                border-color: var(--accent-color);
+            }
+        }
+    }
+
+    .skills-grid {
+        display: grid;
+        gap: 1rem;
+
+        .skill-item {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-subtle);
+            padding: 0.85rem 1rem;
+            border-radius: var(--radius-md);
+
+            .skill-info {
+                display: flex;
+                justify-content: space-between;
+                font-size: 0.9rem;
+                font-weight: 600;
+                margin-bottom: 0.4rem;
+
+                .skill-pct {
+                    color: var(--accent-color);
+                }
+            }
+
+            .progress-bar-bg {
+                background: rgba(255, 255, 255, 0.08);
+                height: 6px;
+                border-radius: 999px;
+                overflow: hidden;
+                margin-bottom: 0.4rem;
+
+                .progress-bar-fill {
+                    height: 100%;
+                    background: linear-gradient(90deg, var(--accent-color), var(--accent-indigo));
+                    border-radius: 999px;
+                    transition: width 0.4s ease;
+                }
+            }
+
+            .skill-desc {
+                font-size: 0.78rem;
+                color: var(--text-dim);
+            }
+        }
+    }
+}
+
+/* =========================================
+   CARD 3: PROJETOS (Ocupa 5 colunas)
+   ========================================= */
+.card-projects {
+    grid-column: span 5;
+
+    .projects-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        .project-item {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-subtle);
+            padding: 1rem;
+            border-radius: var(--radius-md);
+            position: relative;
+
+            &.featured {
+                border-color: rgba(99, 102, 241, 0.4);
+            }
+
+            .badge-featured {
+                font-size: 0.7rem;
+                font-weight: 700;
+                color: var(--accent-indigo);
+                margin-bottom: 0.25rem;
+                display: block;
+            }
+
+            h4 {
+                font-size: 1rem;
+                font-weight: 700;
+                margin-bottom: 0.4rem;
+            }
+
+            p {
+                font-size: 0.82rem;
+                color: var(--text-muted);
+                margin-bottom: 0.75rem;
+            }
+
+            .tech-pills {
+                display: flex;
+                gap: 0.4rem;
+                flex-wrap: wrap;
+
+                .pill {
+                    font-size: 0.72rem;
+                    background: rgba(255, 255, 255, 0.06);
+                    padding: 0.2rem 0.5rem;
+                    border-radius: var(--radius-sm);
+                    color: var(--text-muted);
+                }
+            }
+        }
+    }
+}
+
+/* =========================================
+   CARD 4: FORMAÇÃO (Ocupa 6 colunas)
+   ========================================= */
+.card-education {
+    grid-column: span 6;
+
+    .edu-badge {
+        display: inline-block;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--border-subtle);
+        padding: 0.25rem 0.65rem;
+        border-radius: var(--radius-sm);
+        font-size: 0.8rem;
+        color: var(--accent-color);
+        font-weight: 600;
+        margin-bottom: 0.75rem;
+    }
+
+    h4 {
+        font-size: 1.15rem;
+        font-weight: 700;
+        margin-bottom: 0.2rem;
+    }
+
+    .edu-school {
+        font-size: 0.9rem;
+        color: var(--text-muted);
+        margin-bottom: 0.75rem;
+    }
+
+    .edu-details {
+        font-size: 0.85rem;
+        color: var(--text-dim);
+    }
+}
+
+/* =========================================
+   CARD 5: CONTATO (Ocupa 6 colunas)
+   ========================================= */
+.card-contact {
+    grid-column: span 6;
+
+    .contact-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+
+        .copy-btn {
+            width: 100%;
+            background: var(--accent-glow);
+            border: 1px solid var(--accent-color);
+            color: var(--accent-color);
+            font-weight: 700;
+            padding: 0.85rem 1rem;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            font-size: 0.95rem;
+            transition: all 0.2s;
+
+            &:hover {
+                background: var(--accent-color);
+                color: #09090b;
+            }
+        }
+
+        .social-links {
+            display: flex;
+            gap: 0.75rem;
+
+            .social-btn {
+                flex: 1;
+                text-align: center;
+                text-decoration: none;
+                padding: 0.75rem 1rem;
+                border-radius: var(--radius-md);
+                font-size: 0.88rem;
+                font-weight: 600;
+                border: 1px solid var(--border-subtle);
+                color: var(--text-main);
+                background: rgba(255, 255, 255, 0.03);
+                transition: all 0.2s;
+
+                &:hover {
+                    background: rgba(255, 255, 255, 0.08);
+                    border-color: var(--border-highlight);
+                }
+
+                &.linkedin:hover {
+                    border-color: #0077b5;
+                    color: #38bdf8;
+                }
+            }
+        }
+    }
+}
+
+/* Animação do status pulsante */
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.4;
+        transform: scale(0.9);
+    }
+}
+
+/* Responsividade Mobile */
+@media (max-width: 860px) {
+
+    .card-hero,
+    .card-skills,
+    .card-projects,
+    .card-education,
+    .card-contact {
+        grid-column: span 12;
+    }
+}
