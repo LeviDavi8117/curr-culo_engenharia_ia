@@ -9,7 +9,7 @@ export const MEU_PERFIL: Perfil = {
     status: 'Buscando oportunidades de Estágio / Projetos Acadêmicos',
     email: 'Levidavi25@gmail.com',
     linkedin: 'https://www.linkedin.com/in/levi-davi-707622319/',
-    github: 'https://github.com'
+    github: 'https://github.com/LeviDavi8117'
 };
 
 export const MINHAS_HABILIDADES: Habilidade[] = [
